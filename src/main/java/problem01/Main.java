@@ -39,6 +39,51 @@ public class Main {
 	}
 	
 	public static boolean checkAnswer(int answer) {
+		Scanner scanner = new Scanner(System.in);
+		int answer2 ;
+		count = 1;
+		
+		if(answer > max) {
+				System.out.print("error");
+		return false;		
+		}
+		
+		try {
+			if(answer > min && answer < max ) {
+				count++;
+				System.out.print("[" + 1 + "-" + answer + "] 사이의 값 입력:");
+				answer2 = scanner.nextInt();
+			}
+	
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		while( true ) {
+					
+			if(answer > min ) {
+				count++;
+				System.out.print("[" + 1 + "-" + answer + "] 사이의 값 입력:");
+				answer2 = scanner.nextInt();
+				
+				if(answer > answer2 && answer2 > min) {
+					count++;
+					System.out.print("[" + min + "-" + answer2 + "] 사이의 값 입력:");
+					answer2 = scanner.nextInt();
+				}
+				else if (answer2 > answer){
+					count++;
+					System.out.print("[" + answer2 + "-" + answer + "] 사이의 값 입력:");
+					break;
+				}
+		
+			}else if( answer > max) {
+				System.out.println("error");
+				break;
+			}
+				
+		}
+		
 		return true;
 	}
 }
